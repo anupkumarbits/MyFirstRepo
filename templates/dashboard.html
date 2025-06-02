@@ -1,0 +1,24 @@
+
+<h2>Dashboard</h2>
+<canvas id='ticketChart'></canvas>
+<script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
+<script>
+const ctx = document.getElementById('ticketChart').getContext('2d');
+const ticketChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Open', 'In Progress', 'Resolved'],
+    datasets: [{
+      data: [5, 3, 2],
+      backgroundColor: ['#f39c12', '#3498db', '#2ecc71']
+    }]
+  }
+});
+</script>
+<form method='post' action='/create_ticket'>
+  <input name='title' placeholder='Title'>
+  <textarea name='description' placeholder='Description'></textarea>
+  <select name='priority'><option>low</option><option>medium</option><option>high</option></select>
+  <button>Create Ticket</button>
+</form>
+<a href='/logout'>Logout</a>
