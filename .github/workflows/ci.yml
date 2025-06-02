@@ -1,0 +1,24 @@
+name: Simple CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check if index.html exists
+        run: |
+          if [ -f index.html ]; then
+            echo "index.html exists! 🎉"
+          else
+            echo "index.html is missing! ❌"
+            exit 1
+          fi
+
